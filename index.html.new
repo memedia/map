@@ -1,0 +1,23 @@
+<!DOCTYPE html><html><head>    <title>Courier Marketplace Map</title>    
+<meta charset="utf-8" />    <link rel="stylesheet" href="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.css" />
+ 
+ <style>        body {            padding: 0;            margin: 0;        }        html, body, #map {            height: 100%;            width: 100%;        }    </style>
+ <script src="1009.geojson" type="text/javascript"></script>
+ </head>
+ <body>    <div id="map"></div>    <script src="https://d19vzq90twjlae.cloudfront.net/leaflet-0.7/leaflet.js">    </script>    
+ <script>        
+ var map = L.map('map').setView([-41.2858, 174.78682], 14);        mapLink =             '<a href="http://openstreetmap.org">OpenStreetMap</a>';        L.tileLayer(            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {            attribution: '&copy; ' + mapLink + ' Contributors',            maxZoom: 18,            }).addTo(map);		
+// initialize xServer-internet basemap with silkysand-style		var xMapTileUrl = 'https://s0{s}-xserver2-test.cloud.ptvgroup.com/services/rest/XMap/tile/{z}/{x}/{y}/{profile}?xtok={token}';		L.tileLayer(xMapTileUrl, {			profile: 'silkysand',			token: window.token,			attribution: '<a target="_blank" href="http://www.ptvgroup.com">PTV</a>, HERE',			maxZoom: 22,			subdomains: '1234'		}).addTo(map);				
+//Add our POIs
+//$.getJSON('./1009.json', initialize);function initialize(pd) {    
+ //store our data    
+// poiData = pd;    L.geoJson(poiData, {        attribution: 'DDS, Inobas',        pointToLayer: poiStyle    }).addTo(map);}function poiStyle(feature, latlng) {    var style = L.circleMarker([feature.geometry.coordinates[1], feature.geometry.coordinates[0]], {	fillColor: colors[feature.properties.category],	fillOpacity: 1,	stroke: true,	color: '#000',        weight: 2    }).setRadius(6);    style.bindPopup(feature.properties.description);    return style;} 
+fetch("1009.geojson")
+.then(function(response) {
+return response.json();
+})
+.then(function(data) {
+l.geoJSON(data).addTo(map);
+});
+
+ </script></body></html>
