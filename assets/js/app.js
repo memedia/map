@@ -426,7 +426,7 @@ var featureLayer = L.geoJson(null, {
 $(document).ready(function () {
   $.ajax({
     type: "GET",  
-    url: "http://cors.io/?https://erica.altschul.info/542Tutorial_03.xml", //"https://0489.cxtsoftware.net/CxtWebService/CxtWebServiceRest.svc/rest/process/ImportWS/PUNCHTHROUGH/4756",
+    url: "https://cors.io/?https://erica.altschul.info/542Tutorial_03.xml", //"https://0489.cxtsoftware.net/CxtWebService/CxtWebServiceRest.svc/rest/process/ImportWS/PUNCHTHROUGH/4756",
     crossDomain: true,
     dataType: "xml",
     xhrFields: {
